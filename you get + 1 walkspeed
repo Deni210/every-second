@@ -1,0 +1,20 @@
+_G.farming = true
+_G.autorebirth = true
+function rebirth()
+	game:GetService("ReplicatedStorage").RebirthEvent:FireServer()
+end
+function getspeed()
+	return game:GetService("Players").LocalPlayer.PlayerGui.MainGui.Frame.Top.Jump.amountLabel.Text
+end
+function win()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(9670, 10, -163)
+end
+while _G.farming do
+	if string.find(getspeed(), "K") or tonumber(getspeed()) >= 200 then
+		win()
+	end
+	if _G.autorebirth then
+		rebirth()
+	end
+	task.wait()
+end
